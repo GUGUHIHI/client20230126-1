@@ -10,35 +10,32 @@
 </head>
 <body>
 
+    <input type="text">
+    <button onclick="guess()">입력</button>
+    <p id="result"></p>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-    // 논리 연산자 (logical)
-    // &&, ||, !
+    // 컴퓨터가 1~100사이의 수 선택
+    let com = parseInt(Math.random() * 100) + 1;
+    console.log(com);
 
-    // && (and, 논리곱) : 두개의 항이 모두 true이면 결과가 true, 나머지는 false
-    // 피연산자의 type은 boolean
-    console.log(true && true); // true
-    console.log(true && false); // false
-    console.log(false && true); // false
-    console.log(false && false); // false
+    function guess() {
+        let user = document.querySelector("input").value;
+        user = Number(user);
 
-    // || (or, 논리합) : 두개의 항의 모두 false이면 결과가 false, 나머지는 true
-    // 피연산자의 type은 boolean
-    console.log(true || true); //true
-    console.log(true || false); // true
-    console.log(false || true); // true
-    console.log(false || false); // false
+        let message = "";
 
-    // ! (not) : 피연산자가 하나(boolean), 결과는 피연산자의 반대
-    console.log(!true); // false
-    console.log(!false); // true
+        if (user < com) {
+            message = "더 큰 수를 입력해보세요.";
+        } else if (user > com) {
+            message = "더 작은 수를 입력해보세요.";
+        } else {
+            message = "🎉정답입니다.!!!!";
+        }
 
-    let x = 6;
-    let y = 3;
-
-    console.log((x < 10) && (y > 1)); // true
-    console.log((x === 5) || (y === 5)); // false
-    console.log(!(x === y)); // true
+        document.querySelector("#result").textContent = message;
+    }
 
 
     </script>
